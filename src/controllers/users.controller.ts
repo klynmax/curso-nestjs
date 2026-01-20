@@ -1,9 +1,12 @@
-import { Controller, Delete, Get, Param, Post, Put, Query } from "@nestjs/common";
-
+import { Body, Controller, Delete, Get, Param, ParseIntPipe, Post, Put, Query } from "@nestjs/common";
+import { CreateUserInputDTO } from "src/dtos/users/createUserInput.dto";
+import { UpdateUserInputDTO } from "src/dtos/users/updateUserInput.dto";
 @Controller('users')
 export class UserController {
     @Get()
-    findAll(@Query('id') id: number) {
+    findAll(
+        @Query('id') id: number
+    ) {
         if(id) {
             return 'Teste de rota /users ' + id
         }
@@ -11,18 +14,18 @@ export class UserController {
     }
 
     @Get(':id')
-    findById(@Param('id') id: number) {
+    findById(@Param('id', ParseIntPipe) id: number) {
         return id;
     }
 
     @Post()
-    create() {
-        return 'create user';
+    create(@Body() body: CreateUserInputDTO) {
+        return body;
     }
 
     @Put(':id')
-    update(@Param('id') id: number) {
-        return 'update user ' + id;
+    update(@Param('id') id: number, @Body() body: UpdateUserInputDTO) {
+        return body;
     }
 
     @Delete(':id')
