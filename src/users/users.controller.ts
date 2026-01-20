@@ -1,8 +1,20 @@
-import { BadRequestException, Body, Controller, DefaultValuePipe, Delete, Get, NotFoundException, Param, ParseIntPipe, Post, Put, Query } from "@nestjs/common";
+import { 
+    Get,
+    Put,
+    Body,
+    Post,
+    Query,
+    Param,
+    Delete,
+    Controller,
+    ParseIntPipe,
+    DefaultValuePipe,
+} from "@nestjs/common";
 
-import { CreateUserInputDTO } from "src/dtos/users/createUserInput.dto";
-import { UpdateUserInputDTO } from "src/dtos/users/updateUserInput.dto";
-import { UserService } from "src/services/user.service";
+
+import { UserService } from "src/users/users.service";
+import { CreateUserInputDTO } from "./dtos/createUserInput.dto";
+import { UpdateUserInputDTO } from "./dtos/updateUserInput.dto";
 @Controller('users')
 export class UserController {
     /**
@@ -22,7 +34,6 @@ export class UserController {
 
     @Post()
     create(@Body() body: CreateUserInputDTO) {
-
         return this.usersService.create(body);
     }
 

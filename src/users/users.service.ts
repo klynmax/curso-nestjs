@@ -1,6 +1,6 @@
 import { BadRequestException, Injectable, NotFoundException } from "@nestjs/common";
-import { CreateUserInputDTO } from "src/dtos/users/createUserInput.dto";
-import { UpdateUserInputDTO } from "src/dtos/users/updateUserInput.dto";
+import { CreateUserInputDTO } from "./dtos/createUserInput.dto";
+import { UpdateUserInputDTO } from "./dtos/updateUserInput.dto";
 
 @Injectable()
 export class UserService {
